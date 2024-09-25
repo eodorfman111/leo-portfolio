@@ -1,66 +1,73 @@
-// src/pages/Home.js
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import leoImage from '../assets/leo.png'; 
+import leoImage from '../assets/leo.png';
 
 const HomeContainer = styled(motion.section)`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90%; 
-  width: 100%; 
-  text-align: center;
-  flex-direction: row; 
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  padding: 2rem;
+  flex-direction: column-reverse;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
   }
 `;
 
 const TextContainer = styled.div`
   flex: 1;
-  min-width: 300px;
-  padding: 1rem;
+  max-width: 600px;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    text-align: left;
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
 `;
 
 const ImageContainer = styled.div`
   flex: 1;
-  min-width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  max-width: 400px;
 `;
 
 const LeoImage = styled(motion.img)`
-  width: 600px;
+  width: 100%;
   height: auto;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.3s;
-
-  @media (max-width: 768px) {
-    width: 200px;
-  }
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: ${({ theme }) => theme.text};
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.5rem;
-  color: #f0f0f0;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.text};
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const ProjectsButton = styled(motion.button)`
-  margin-top: 2rem;
   padding: 0.75rem 1.5rem;
   background-color: #ff6347;
   color: #fff;
@@ -69,16 +76,11 @@ const ProjectsButton = styled(motion.button)`
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.2s;
 
   &:hover {
     background-color: #e5533d;
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: translateY(0);
   }
 `;
 
@@ -107,15 +109,15 @@ const Home = () => {
         </ProjectsButton>
       </TextContainer>
       <ImageContainer>
-        <LeoImage 
-          src={leoImage} 
-          alt="Leo Dorfman" 
+        <LeoImage
+          src={leoImage}
+          alt="Leo Dorfman"
           animate={{
             scale: [1, 1.05, 1],
-            rotate: [0, 10, -10, 0],
+            rotate: [0, 5, -5, 0],
           }}
           transition={{
-            duration: 2,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}

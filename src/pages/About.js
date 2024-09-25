@@ -1,103 +1,96 @@
-// src/pages/About.js
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import leoImage from '../assets/leosmile.png'; // Updated image path
-import handImage from '../assets/hand.png'; // Ensure you have a 'hand.png' in src/assets
+import leoImage from '../assets/leosmile.png';
+import handImage from '../assets/hand.png';
 
 const AboutSection = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: -20rem 0rem;
-  gap: 6rem;
+  padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  top: 0;
-  position: relative; 
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 2rem 1rem;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
   }
 `;
 
 const ImageContainer = styled.div`
-  flex: 3;
-  min-width: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative; 
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    flex: 1;
+    margin-right: 4rem;
+    margin-bottom: 0;
+  }
 `;
 
 const ProfileImage = styled.img`
-  width: 600px;
+  width: 100%;
   height: auto;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  position: relative; 
-  top: -200px;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-  }
-
-  @media (max-width: 768px) {
-    width: 200px;
-    top: -10px;  
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 `;
 
-
 const HandImage = styled(motion.img)`
-  width: 150px;
+  width: 60px;
   height: auto;
   position: absolute;
-  top: -20px; 
-  right: 500px;
-  transform-origin: bottom center; 
- 
-  @media (max-width: 768px) {
-    right: -30px;
-    width: 100px;
+  top: 0;
+  right: 0;
+  transform-origin: bottom center;
+
+  @media (min-width: 768px) {
+    width: 80px;
   }
 `;
 
 const ContentContainer = styled.div`
   flex: 2;
-  min-width: 300px;
   color: ${({ theme }) => theme.text};
   line-height: 1.6;
 `;
 
 const Heading = styled.h2`
-  color: #ff7f50;  
-  margin-bottom: 1rem;
-  text-align: left;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  font-size: 2.5rem;
+  color: #ff7f50;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
 
-  @media (max-width: 768px) {
-    text-align: center;
+  @media (min-width: 768px) {
+    text-align: left;
+    font-size: 2.5rem;
   }
 `;
 
 const Paragraph = styled.p`
   margin-bottom: 1.5rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const About = () => (
   <AboutSection>
     <ImageContainer>
       <ProfileImage src={leoImage} alt="Leo Dorfman" />
-      {}
       <HandImage
         src={handImage}
         alt="Waving Hand"
@@ -105,8 +98,8 @@ const About = () => (
           rotate: [0, -20, 20, -20, 20, 0],
         }}
         transition={{
-          duration: 2, 
-          repeat: Infinity, 
+          duration: 2,
+          repeat: Infinity,
           ease: "easeInOut",
         }}
       />

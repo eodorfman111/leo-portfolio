@@ -1,10 +1,9 @@
-// src/pages/Projects.js
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const ProjectsSection = styled.section`
-  padding: 2rem;
+  padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -12,44 +11,52 @@ const ProjectsSection = styled.section`
 
 const Heading = styled.h2`
   color: #ff7f50;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 2.5rem;
 `;
 
 const ProjectsGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   justify-content: center;
 `;
 
 const ProjectCard = styled(motion.div)`
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: ${({ theme }) => theme.body};
   border-radius: 8px;
-  width: 300px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   &:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   }
 `;
 
 const ProjectTitle = styled.h3`
   margin-top: 0;
-  color: #333;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  color: ${({ theme }) => theme.text};
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 `;
 
 const ProjectDescription = styled.p`
-  color: #555;
+  color: ${({ theme }) => theme.text};
+  flex-grow: 1;
+  margin-bottom: 1rem;
 `;
 
 const ProjectLink = styled.a`
   color: #ff7f50;
   font-weight: bold;
+  text-decoration: none;
+  align-self: flex-start;
 
   &:hover {
     text-decoration: underline;
@@ -68,7 +75,7 @@ const Projects = () => {
       description: 'A real-time stats application using Flask and the Brawl Stars API, providing players with up-to-date performance metrics and game insights.',
       link: 'https://shorturl.at/b9OeP',
     },
-    
+    // Add more projects here
   ];
 
   return (
@@ -78,8 +85,8 @@ const Projects = () => {
         {projects.map((project, index) => (
           <ProjectCard
             key={index}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
           >
             <ProjectTitle>{project.name}</ProjectTitle>
             <ProjectDescription>{project.description}</ProjectDescription>

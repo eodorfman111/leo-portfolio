@@ -1,44 +1,46 @@
-// src/pages/Experience.js
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const ExperienceSection = styled.section`
-  padding: 2rem;
-  max-width: 1200px;
+  padding: 4rem 2rem;
+  max-width: 1000px;
   margin: 0 auto;
   width: 100%;
 `;
 
 const Heading = styled.h2`
-  color: #ff7f50; 
-  margin-bottom: 1rem;
+  color: #ff7f50;
+  margin-bottom: 2rem;
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 2.5rem;
 `;
 
-const ExperienceItem = styled.div`
-  background-color: rgba(255, 255, 255, 0.8);
+const ExperienceItem = styled(motion.div)`
+  background-color: ${({ theme }) => theme.body};
   border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
 const RoleCompany = styled.h3`
   margin-top: 0;
-  color: #333;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  color: ${({ theme }) => theme.text};
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 `;
 
 const LocationDuration = styled.p`
   font-style: italic;
-  color: #555;
+  color: ${({ theme }) => theme.text}99;
+  margin-bottom: 1rem;
 `;
 
 const Responsibilities = styled.ul`
   list-style: disc;
   padding-left: 1.5rem;
-  color: #555;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Experience = () => {
@@ -54,7 +56,7 @@ const Experience = () => {
       ],
     },
     {
-      role: 'Team Captain, UF Beach Volleyball A Team',
+      role: 'Team Captain, UF Beach Volleyball Team',
       company: 'University of Florida',
       location: 'Gainesville, FL',
       duration: 'August 2023 – Present',
@@ -63,14 +65,18 @@ const Experience = () => {
         'Led a team of 25 members, fostering collaboration and problem-solving to enhance performance.',
       ],
     },
-
   ];
 
   return (
     <ExperienceSection>
       <Heading>Experience</Heading>
       {experiences.map((exp, index) => (
-        <ExperienceItem key={index}>
+        <ExperienceItem
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.2 }}
+        >
           <RoleCompany>
             {exp.role} at {exp.company}
           </RoleCompany>
