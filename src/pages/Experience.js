@@ -10,14 +10,14 @@ const ExperienceSection = styled.section`
 `;
 
 const Heading = styled.h2`
-  color: #ff7f50; /* Coral color */
+  color: #ff7f50; 
   margin-bottom: 1rem;
   text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
 const ExperienceItem = styled.div`
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent for contrast */
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;

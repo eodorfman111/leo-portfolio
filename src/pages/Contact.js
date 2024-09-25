@@ -15,7 +15,7 @@ const ContactSection = styled.section`
 `;
 
 const Heading = styled.h2`
-  color: #ff7f50; /* Coral color */
+  color: #ff7f50;
   margin-bottom: 1rem;
   text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -54,13 +54,13 @@ const TextArea = styled(Field)`
 `;
 
 const ErrorText = styled.div`
-  color: #ff4d4f; /* Red for errors */
+  color: #ff4d4f;
   margin-bottom: 1rem;
   font-size: 0.9rem;
 `;
 
 const SubmitButton = styled.button`
-  background-color: #ff7f50; /* Coral color */
+  background-color: #ff7f50;
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;

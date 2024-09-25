@@ -9,10 +9,10 @@ const HomeContainer = styled(motion.section)`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90%; /* Full height from Main */
-  width: 100%;  /* Full width from Main */
+  height: 90%; 
+  width: 100%; 
   text-align: center;
-  flex-direction: row; /* Default to row */
+  flex-direction: row; 
   
   @media (max-width: 768px) {
     flex-direction: column;
@@ -62,7 +62,7 @@ const Subtitle = styled.p`
 const ProjectsButton = styled(motion.button)`
   margin-top: 2rem;
   padding: 0.75rem 1.5rem;
-  background-color: #ff6347; /* Tomato color */
+  background-color: #ff6347;
   color: #fff;
   border: none;
   border-radius: 4px;

@@ -6,10 +6,10 @@ import linkedinLogo from '../assets/linkedin.png';
 import instagramLogo from '../assets/instagram.png';
 
 const FooterContainer = styled.footer`
-  background-color: ${({ theme }) => theme.navBg}; /* Use theme color */
+  background-color: ${({ theme }) => theme.navBg}; 
   color: ${({ theme }) => theme.navText};
   text-align: center;
-  padding: 1.5rem 2rem; /* Increased padding for taller footer */
+  padding: 1.5rem 2rem; 
   margin-top: 3.2rem;
   position: relative;
   width: 100%;

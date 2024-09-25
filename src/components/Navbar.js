@@ -8,7 +8,7 @@ import { useContext } from 'react';
 
 const Nav = styled.nav`
   background: ${({ theme }) => theme.navBg};
-  padding: 1.5rem 2rem; /* Increased padding for taller navbar */
+  padding: 1.5rem 2rem; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed; /* Fixed position to stay on top */
   top: 0;
@@ -17,7 +17,7 @@ const Nav = styled.nav`
   height: 80px; /* Fixed height */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space between nav links and toggle */
+  justify-content: space-between; 
 `;
 
 const NavLinks = styled.ul`

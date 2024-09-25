@@ -40,12 +40,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: 'Poppins', sans-serif;
     transition: background 0.5s, color 0.5s;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden; 
     height: 100%;
     width: 100%;
   }
 
-  /* Ensure all sections take full height */
+  
   #root,
   body,
   html {
@@ -56,10 +56,10 @@ const GlobalStyle = createGlobalStyle`
 
 
 const Main = styled.main`
-  padding-top: 80px; /* Equal to Navbar height */
-  padding-bottom: 80px; /* Equal to Footer height */
+  padding-top: 80px;
+  padding-bottom: 80px; 
   width: 100%;
-  min-height: calc(100vh - 160px); /* Adjust based on Navbar and Footer height */
+  min-height: calc(100vh - 160px); 
 `;
 
 const AppContent = () => {
