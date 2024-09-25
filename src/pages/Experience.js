@@ -3,39 +3,42 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ExperienceSection = styled.section`
-  background-color: ${({ theme }) => theme.body};
   padding: 2rem;
-  border-radius: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 `;
 
 const Heading = styled.h2`
-  color: ${({ theme }) => theme.text};
+  color: #ff7f50; /* Coral color */
   margin-bottom: 1rem;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
 const ExperienceItem = styled.div`
-  background-color: #fff;
-  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent for contrast */
   border-radius: 8px;
+  padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 `;
 
 const RoleCompany = styled.h3`
   margin-top: 0;
-  color: ${({ theme }) => theme.text};
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 `;
 
 const LocationDuration = styled.p`
   font-style: italic;
-  color: ${({ theme }) => theme.text};
+  color: #555;
 `;
 
 const Responsibilities = styled.ul`
   list-style: disc;
   padding-left: 1.5rem;
-  color: ${({ theme }) => theme.text};
+  color: #555;
 `;
 
 const Experience = () => {
@@ -46,8 +49,8 @@ const Experience = () => {
       location: 'North Miami, FL',
       duration: 'August 2022 – August 2023',
       responsibilities: [
-        'Instructed 15+ students, improving math performance and test scores.',
-        'Adapted teaching methods to identify and resolve learning barriers.',
+        'Instructed 15+ students, enhancing their math skills and improving test scores.',
+        'Adapted teaching methods to identify and overcome individual learning barriers.',
       ],
     },
     {
@@ -56,11 +59,11 @@ const Experience = () => {
       location: 'Gainesville, FL',
       duration: 'August 2023 – Present',
       responsibilities: [
-        'Managed team logistics and event coordination, improving participation by 15%.',
-        'Led a team of 25 members, enhancing team performance through problem-solving.',
+        'Managed team logistics and coordinated events, boosting participation by 15%.',
+        'Led a team of 25 members, fostering collaboration and problem-solving to enhance performance.',
       ],
     },
-    // Add more experiences as needed
+
   ];
 
   return (

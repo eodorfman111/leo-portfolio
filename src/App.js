@@ -7,20 +7,21 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Helmet } from 'react-helmet';
 
-// Lazy load pages
+
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
 const Experience = lazy(() => import('./pages/Experience'));
 const Contact = lazy(() => import('./pages/Contact'));
 
-// Define light and dark themes
+
 const lightTheme = {
-  body: '#f4f4f4',
+  body: '#f0f8ff',
   text: '#333',
-  navBg: '#333',
+  navBg: '#89CFF0', 
   navText: '#fff',
-  linkHover: '#ff6347',
+  linkHover: '#ff7f50',
+  gradient: 'linear-gradient(135deg, #1e90ff 0%, #ff6347 100%)', 
 };
 
 const darkTheme = {
@@ -28,62 +29,59 @@ const darkTheme = {
   text: '#f4f4f4',
   navBg: '#1f1f1f',
   navText: '#f4f4f4',
-  linkHover: '#ff6347',
+  linkHover: '#ff7f50',
+  gradient: 'linear-gradient(135deg, #000000 0%, #1e90ff 100%)', 
 };
 
-// Global styles
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${({ theme }) => theme.body};
+    background: ${({ theme }) => theme.gradient};
     color: ${({ theme }) => theme.text};
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.5s, color 0.5s;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Ensure all sections take full height */
+  #root,
+  body,
+  html {
+    height: 100%;
+    width: 100%;
   }
 `;
 
-// Toggle Button for Dark Mode
-const ToggleButton = styled.button`
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  color: ${({ theme }) => theme.navText};
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: color 0.3s;
 
-  &:hover {
-    color: ${({ theme }) => theme.linkHover};
-  }
-`;
-
-// Main content wrapper
 const Main = styled.main`
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-bottom: 4rem; /* To prevent content from being hidden behind footer */
+  padding-top: 80px; /* Equal to Navbar height */
+  padding-bottom: 80px; /* Equal to Footer height */
+  width: 100%;
+  min-height: calc(100vh - 160px); /* Adjust based on Navbar and Footer height */
 `;
 
 const AppContent = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <Helmet>
         <title>Leo Dorfman | Portfolio</title>
-        <meta name="description" content="Leo Dorfman's professional portfolio showcasing skills, projects, and experiences." />
-        <meta name="keywords" content="Leo Dorfman, Portfolio, Computer Science, Projects, Skills" />
+        <meta
+          name="description"
+          content="Leo Dorfman's professional portfolio showcasing skills, projects, and experiences."
+        />
+        <meta
+          name="keywords"
+          content="Leo Dorfman, Portfolio, Computer Science, Projects, Skills"
+        />
         <meta name="author" content="Leo Dorfman" />
       </Helmet>
       <GlobalStyle />
       <Router>
         <Navbar />
-        <ToggleButton onClick={toggleTheme}>
-          {theme === 'light' ? '🌙' : '☀️'}
-        </ToggleButton>
         <Main>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>

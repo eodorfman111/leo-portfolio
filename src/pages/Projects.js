@@ -4,15 +4,17 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const ProjectsSection = styled.section`
-  background-color: ${({ theme }) => theme.body};
   padding: 2rem;
-  border-radius: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 `;
 
 const Heading = styled.h2`
-  color: ${({ theme }) => theme.text};
+  color: #ff7f50; /* Coral color */
   margin-bottom: 1rem;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
 const ProjectsGrid = styled.div`
@@ -23,24 +25,30 @@ const ProjectsGrid = styled.div`
 `;
 
 const ProjectCard = styled(motion.div)`
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent for contrast */
   border-radius: 8px;
   width: 300px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const ProjectTitle = styled.h3`
   margin-top: 0;
-  color: ${({ theme }) => theme.text};
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 `;
 
 const ProjectDescription = styled.p`
-  color: ${({ theme }) => theme.text};
+  color: #555;
 `;
 
 const ProjectLink = styled.a`
-  color: ${({ theme }) => theme.linkHover};
+  color: #ff7f50; /* Coral color */
   font-weight: bold;
 
   &:hover {
@@ -52,15 +60,15 @@ const Projects = () => {
   const projects = [
     {
       name: 'VolleyMeet',
-      description: 'Full-stack web application using React.js and Firebase.',
+      description: 'A full-stack web application built with React.js and Firebase, facilitating event organization and real-time updates for beach volleyball enthusiasts.',
       link: 'https://volleymeet.netlify.app/',
     },
     {
       name: 'Brawl Stars Stats Application',
-      description: 'Real-time stats app using Flask and Brawl Stars API.',
+      description: 'A real-time stats application using Flask and the Brawl Stars API, providing players with up-to-date performance metrics and game insights.',
       link: 'https://shorturl.at/b9OeP',
     },
-    // Add more projects as needed
+    
   ];
 
   return (

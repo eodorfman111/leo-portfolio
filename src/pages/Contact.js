@@ -3,17 +3,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import githubLogo from '../assets/github.png';
+import linkedinLogo from '../assets/linkedin.png';
+import instagramLogo from '../assets/instagram.png';
 
 const ContactSection = styled.section`
-  background-color: ${({ theme }) => theme.body};
+  
   padding: 2rem;
   border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
 const Heading = styled.h2`
-  color: ${({ theme }) => theme.text};
+  color: #ff7f50; /* Coral color */
   margin-bottom: 1rem;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 `;
 
 const StyledForm = styled(Form)`
@@ -25,58 +30,85 @@ const StyledForm = styled(Form)`
 
 const Label = styled.label`
   margin-bottom: 0.5rem;
-  color: ${({ theme }) => theme.text};
-  font-weight: bold;
+  color: #;
+  font-weight: 600;
 `;
 
 const Input = styled(Field)`
-  padding: 0.5rem;
+  padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const TextArea = styled(Field)`
-  padding: 0.5rem;
+
+  padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
   height: 150px;
+  font-family: 'Poppins', sans-serif;
 `;
 
 const ErrorText = styled.div`
-  color: red;
+  color: #ff4d4f; /* Red for errors */
   margin-bottom: 1rem;
+  font-size: 0.9rem;
 `;
 
 const SubmitButton = styled.button`
-  background-color: #ff6347;
+  background-color: #ff7f50; /* Coral color */
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
   align-self: flex-end;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
 
   &:hover {
-    background-color: #e5533d;
+    background-color: #e66c3a;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 `;
 
 const ContactDetails = styled.div`
   margin-top: 2rem;
   text-align: center;
-  color: ${({ theme }) => theme.text};
+  color: #fff;
+`;
 
-  a {
-    color: #ff6347;
-    text-decoration: none;
+const SocialLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+`;
 
-    &:hover {
-      text-decoration: underline;
-    }
+const SocialIcon = styled.a`
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: ${({ theme }) => (theme.theme === 'dark' ? 'invert(1)' : 'none')};
+    transition: filter 0.3s;
+  }
+
+  &:hover img {
+    filter: brightness(0.8);
   }
 `;
 
@@ -88,15 +120,14 @@ const Contact = () => {
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email address').required('Required'),
-    message: Yup.string().required('Required'),
+    name: Yup.string().required('Your name is required'),
+    email: Yup.string().email('Invalid email address').required('Your email is required'),
+    message: Yup.string().required('Please enter a message'),
   });
 
   const onSubmit = (values, { resetForm }) => {
-    // Handle form submission (e.g., send data to Firebase or Netlify Forms)
     console.log('Form data', values);
-    alert('Message sent!');
+    alert('Thank you for your message!');
     resetForm();
   };
 
@@ -121,9 +152,17 @@ const Contact = () => {
         </StyledForm>
       </Formik>
       <ContactDetails>
-        <p>Email: <a href="mailto:leodorfman1@gmail.com">leodorfman1@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/leo-dorfman" target="_blank" rel="noopener noreferrer">linkedin.com/in/leo-dorfman</a></p>
-        <p>GitHub: <a href="https://github.com/eodorfman111" target="_blank" rel="noopener noreferrer">github.com/eodorfman111</a></p>
+        <SocialLinks>
+          <SocialIcon href="https://github.com/eodorfman111" target="_blank" rel="noopener noreferrer">
+            <img src={githubLogo} alt="GitHub" />
+          </SocialIcon>
+          <SocialIcon href="https://www.linkedin.com/in/leo-dorfman" target="_blank" rel="noopener noreferrer">
+            <img src={linkedinLogo} alt="LinkedIn" />
+          </SocialIcon>
+          <SocialIcon href="https://www.instagram.com/leo.dorf" target="_blank" rel="noopener noreferrer">
+            <img src={instagramLogo} alt="Instagram" />
+          </SocialIcon>
+        </SocialLinks>
       </ContactDetails>
     </ContactSection>
   );
